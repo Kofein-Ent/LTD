@@ -25,7 +25,7 @@ public class LevelSetuper : MonoBehaviour
             {
                 GameObject tile = _tiles[j + _columns * i];
                 if (tile != null) 
-                    Instantiate(tile, spawnPoint, Quaternion.identity);
+                    Instantiate(tile, spawnPoint, Quaternion.identity, _point);
                 spawnPoint.x += _offset;
             }
             spawnPoint.x = startX;
