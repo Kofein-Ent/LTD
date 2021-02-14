@@ -14,9 +14,6 @@ namespace Tiles
             if (collision.TryGetComponent(out Tower tower))
                 OnTowerPlacement(tower);
         }
-        private void OnMouseDown() => 
-            ShowUI();
-
         /// <summary>
         /// Method for doing logic when the tower is placed.
         /// </summary>
@@ -24,13 +21,6 @@ namespace Tiles
         /// Tower placed on the tile
         /// </param>
         protected virtual void OnTowerPlacement(Tower tower)
-        {
-            
-        }
-        /// <summary>
-        /// Method for UI display. Invokes in the OnMouseDown call-back. 
-        /// </summary>
-        protected virtual void ShowUI()
         {
         
         }

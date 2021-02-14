@@ -1,7 +1,7 @@
-﻿using Towers;
+using UnityEditor.SearchService;
 using UnityEngine;
 
-namespace Tiles.ConstructionTiles
+namespace Tiles
 {
     public class ConstructionTile : Tile
     {

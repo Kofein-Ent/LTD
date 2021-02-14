@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour
     {
-        [SerializeField] protected Transform[] _waypoints;
-        [SerializeField] [Range(0f, 20f)] protected float _speed;
-        [SerializeField] protected float _health;
+        [SerializeField] private Transform[] _waypoints;
+        [SerializeField] [Range(0f, 20f)] protected float Speed;
+        [SerializeField] protected float Health;
 
         private void OnEnable() => 
             StartCoroutine(MoveRoutine());
@@ -15,23 +15,21 @@ namespace Enemies
         /// <summary>
         /// Invokes every frame while enemy is alive.
         /// </summary>
-        protected virtual void OnMove()
+        protected virtual void EnemyUpdate()
         {
             
         }
         private IEnumerator MoveRoutine()
         {
-            for (int i = 0; i < _waypoints.Length - 1; i++)
+            foreach (Transform t in _waypoints)
             {
-                yield return new WaitForSecondsRealtime(2);
-                while (Vector2.Distance(transform.position, _waypoints[i + 1].position) > .09f)
+                while (Vector2.Distance(transform.position, t.position) > 0)
                 {
-                    transform.Translate((_waypoints[i + 1].position - _waypoints[i].position).normalized *
-                                        (_speed * Time.deltaTime));
-                    OnMove();
+                    transform.position = Vector2.MoveTowards(transform.position, t.position,
+                        Speed * Time.deltaTime);
+                    EnemyUpdate();
                     yield return null;
                 }
-                transform.position = _waypoints[i + 1].position;
             }
         }
     }
