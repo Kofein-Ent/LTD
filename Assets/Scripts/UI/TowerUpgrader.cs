@@ -15,6 +15,7 @@ public class TowerUpgrader : MonoBehaviour
 
     public void DeleteTower()
     {
+        
         Destroy(_tower.gameObject);
     }
 }
