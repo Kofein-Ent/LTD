@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using WaveSpawner;
 
 namespace Tiles.WaveSpawner
 {
@@ -9,19 +8,19 @@ namespace Tiles.WaveSpawner
         [SerializeField] private Transform _parentTransform;
         [SerializeField] private Wave[] _waves;
         [SerializeField] private float _waveDelay;
-        
-        private int _currentWave;
 
         private void Start()
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
         }
 
-        private void SpawnWave()
+        private IEnumerator SpawnWave()
         {
-            Wave wave = _waves[_currentWave++];
-
-            StartCoroutine(SpawnRoutine(wave));
+            foreach (Wave wave in _waves)
+            {
+                StartCoroutine(SpawnRoutine(wave));
+                yield return new WaitForSeconds(_waveDelay);
+            }
         }
         private IEnumerator SpawnRoutine(Wave wave)
         {

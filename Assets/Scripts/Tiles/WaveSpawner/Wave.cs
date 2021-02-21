@@ -1,8 +1,7 @@
 ﻿using System;
-using Enemies;
 using UnityEngine;
 
-namespace WaveSpawner
+namespace Tiles.WaveSpawner
 {
     [Serializable]
     public struct Wave

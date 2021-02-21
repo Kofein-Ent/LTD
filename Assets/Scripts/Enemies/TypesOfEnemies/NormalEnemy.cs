@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Enemies
+namespace Enemies.TypesOfEnemies
 {
     public class NormalEnemy : Enemy
     {
