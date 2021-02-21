@@ -9,10 +9,23 @@ namespace UI
 
         public void OnPointerDown(PointerEventData data)
         {
-            if (!UIOpener.IsPressed && data.button != PointerEventData.InputButton.Right)
-                _UIPanel.SetActive(false);
+            if (!UIPlaceOpener.IsPressed && data.button != PointerEventData.InputButton.Right)
+            {
+                Close();
+            }
             else
-                UIOpener.IsPressed = false;
+            {
+                UIPlaceOpener.IsPressed = false;
+            }
+        }
+
+        public void Close()
+        {
+            _UIPanel.SetActive(false);
+            foreach (Transform child in _UIPanel.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
         }
     }
 }

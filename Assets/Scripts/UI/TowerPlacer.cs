@@ -6,11 +6,15 @@ namespace UI
     public class TowerPlacer : MonoBehaviour
     {
         private Vector3 _createPosition;
-        private Tower _tower;
-        
+
         public void GetPosition(Vector3 position) => 
             _createPosition = position;
-        public void GetTower(Tower tower) =>
-            _tower = tower;
+        
+        public void PlaceTower(Tower tempTower)
+        {
+            Tower tower = Instantiate(tempTower, _createPosition, Quaternion.identity);
+            tower.gameObject.SetActive(true);
+        }
+
     }
 }
